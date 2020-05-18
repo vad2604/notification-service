@@ -1,15 +1,21 @@
 package com.example.smsnotification;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("sms")
 public class SmsController {
 
-    @GetMapping("/getsms")
-    public String getSms() {
-        return "sms";
+    private static final Logger logger = LoggerFactory.getLogger(SmsController.class);
+    private static final String SUCCESS_RESPONSE = "SMS successfully sent";
+
+    @PostMapping("/sendSms")
+    public String sendSms(@Valid @RequestBody SmsMessage smsMessage) {
+        logger.info(SUCCESS_RESPONSE);
+        return SUCCESS_RESPONSE;
     }
 }
