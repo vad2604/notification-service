@@ -1,0 +1,26 @@
+server:
+  port: 8079
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: smsService
+          uri: lb://SMS-SERVICE/
+          predicates:
+            - Path=/sms/**
+        - id: emailService
+          uri: lb://EMAIL-SERVICE/
+          predicates:
+            - Path=/email/**
+        - id: pushService
+          uri: lb://PUSH-SERVICE/
+          predicates:
+            - Path=/push/**
+eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://eureka:8761/eureka
+    instance:
+       prefer-ip-address: true

@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+      
+  eureka:
+    build: ../eureka-server
+    container_name: eureka
+    hostname: eureka
+    restart: always
+    ports:
+      - "8761:8761"
+    
+  email-notification:
+    build: ../email-notification
+    container_name: email-notification
+    hostname: email-notification
+    restart: always
+    ports:
+      - "8083:8083"
+    depends_on:
+      - eureka
+
+  gateway:
+    build: ../gateway
+    container_name: gateway
+    hostname: gateway
+    restart: always
+    ports:
+      - "8079:8079"
+    depends_on:
+      - eureka
+
+  sms-notification:
+    build: ../sms-notification
+    container_name: sms-notification
+    hostname: sms-notification
+    restart: always
+    ports:
+      - "8082:8082"
+    depends_on:
+      - eureka
+
+  push-notification:
+    build: ../push-notification
+    container_name: push-notification
+    hostname: push-notification
+    restart: always
+    ports:
+      - "8084:8084"
+    depends_on:
+      - eureka
+
+
+
