@@ -2,6 +2,16 @@ version: '3'
 
 services:
       
+  config:
+    build: ../config-server
+    container_name: config
+    hostname: config
+    restart: always
+    ports:
+      - "8888:8888"
+    depends_on:
+      - eureka
+
   eureka:
     build: ../eureka-server
     container_name: eureka
