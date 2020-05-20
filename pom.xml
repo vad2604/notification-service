@@ -34,6 +34,7 @@
     </dependencyManagement>
 
     <modules>
+        <module>entities</module>
         <module>config-server</module>
         <module>email-notification</module>
         <module>eureka-server</module>
