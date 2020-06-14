@@ -1,12 +1,15 @@
 package com.example.emailnotification;
 
+import com.fedoseev.entities.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import com.fedoseev.entities.Response;
 
 @RestController
 @RibbonClient(name="email-service")

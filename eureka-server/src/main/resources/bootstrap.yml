@@ -1,7 +1,21 @@
 spring:
   application:
     name: eureka-server
+---
+spring:
+  profiles: prod
   cloud:
     config:
       uri: http://config:8888
       fail-fast: true
+---
+spring:
+  profiles: dev
+server:
+   port: 8761
+eureka:
+    client:
+       registerWithEureka: false
+       fetchRegistry: false
+       service-url:
+          defaultZone: http://localhost:8761/eureka
